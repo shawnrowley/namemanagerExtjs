@@ -8,39 +8,39 @@
     views: ['namemanager.view.Person'],
 
     refs: [{
-        ref: 'studentMasterForm',
-        selector: 'viewport > container > StudentMaster'
+        ref: 'personViewForm',
+        selector: 'viewport > container > PersonView'
     }],
 
     init: function () {
         this.control({
 
-            'viewport > container > StudentMaster button[itemId=btnCreate]': {
+            'viewport > container > PersonView button[itemId=btnCreate]': {
                 click: this.onCreateClick
             },
-            'viewport > container > StudentMaster button[itemId=btnLoad]': {
+            'viewport > container > PersonView button[itemId=btnLoad]': {
                 click: this.onLoadClick
             },
-            'viewport > container > StudentMaster button[itemId=btnUpdate]': {
+            'viewport > container > PersonView button[itemId=btnUpdate]': {
                 click: this.onUpdateClick
             },
-            'viewport > container > StudentMaster button[itemId=btnDelete]': {
+            'viewport > container > PersonView button[itemId=btnDelete]': {
                 click: this.onDeleteClick
             },
-            'viewport > container > StudentMaster button[itemId=btnReset]': {
+            'viewport > container > PersonView button[itemId=btnReset]': {
                 click: this.onResetClick
             },
-            'viewport > container > StudentMaster button[itemId=btnClear]': {
+            'viewport > container > PersonView button[itemId=btnClear]': {
                 click: this.onClearClick
             }
         });
     },
    
     onResetClick: function () {
-        this.getStudentMasterForm().getForm().reset();
+        this.getPersonViewForm().getForm().reset();
     },
    
     onClearClick: function () {
-        this.getStudentMasterForm().clearForm();
+        this.getPersonViewForm().clearForm();
     }
 });
