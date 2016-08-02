@@ -23,10 +23,10 @@
             root: 'data' 
         },
         api: {
-            read: '/ExampleService.svc/readstudent/',
-            create: '/ExampleService.svc/createstudent/',
-            update: '/ExampleService.svc/updatestudent/',
-            destroy: '/ExampleService.svc/deletestudent/'
+            read: '/rest/readperson/',
+            create: '/rest/createperson/',
+            update: '/rest/updateperson/',
+            destroy: '/rest/deleteperson/'
         }
     }
 });
