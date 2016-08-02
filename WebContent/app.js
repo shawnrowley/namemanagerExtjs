@@ -1,5 +1,9 @@
 Ext.application({
-    name : 'extjs-tutorial.com',
+    requires ['Ext.container.Viewport'],
+    name : 'NameManagerExtjs',
+    views : ['PersonView'],
+    controllers: ['PersonController'],
+    
     
     launch : function(){
         
@@ -8,10 +12,10 @@ Ext.application({
             layout : 'fit',
             
             items : [{
-                title : 'First ExtJS Application - Viewport title',
-                html : 'Application Viewport area.'
+               xtype: 'PersonView'
             }]
         });
         
     }
 });
+
