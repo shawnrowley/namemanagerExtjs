@@ -79,7 +79,18 @@
           failure : function (resp) {
            
           }
-        })
+        });
+    }
+    
+    updatePerson: function(person) {
+      var me =this;
+        Ext.Ajax.request({
+           url : '/rest/update',
+           method : 'POST', 
+           jsonData : person,
+           
+         
+        });
     }
 
 });
