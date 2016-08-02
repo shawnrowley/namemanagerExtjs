@@ -42,5 +42,27 @@
    
     onClearClick: function () {
         this.getPersonViewForm().clearForm();
+    },
+    
+    addPerson: function(person) {
+      var me =this;
+      Ext.Ajax.request({
+           url : 'rest/add',
+           method : 'POST',
+           jsonData : person,
+           reader : {
+                 type: 'json'
+           }, 
+           success: function(resp) {
+           
+           },
+           failure: function(resp) {
+           
+           } 
+       });
+    }  
+           }
+           }
+      })
     }
 });
