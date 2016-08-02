@@ -54,14 +54,32 @@
                  type: 'json'
            }, 
            success: function(resp) {
-           
+               //reload
            },
            failure: function(resp) {
-           
+               //failed display
            } 
        });
     },
     
-    deletePerson 
+    deletePerson: function(person) {
+        var me = this;
+        Ext.Ajax.request({
+          url : '/rest/delete',
+          method : 'POST',
+          jsonData : person,
+          headers:
+          {
+              'Accept' :'application/json',
+              'Content-Type' : 'application/json'
+          },
+          success : function(resp) {
+           
+          },
+          failure : function (resp) {
+           
+          }
+        })
+    }
 
 });
