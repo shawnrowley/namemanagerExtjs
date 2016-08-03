@@ -1,9 +1,9 @@
+
 Ext.application({
-    requires ['Ext.container.Viewport'],
-    name : 'NameManagerExtjs',
-    views : ['PersonView'],
+	requires : ['Ext.container.Viewport'],
+    name : 'namemanager',
+    views : ['namemanager.view.PersonView'],
     controllers: ['PersonController'],
-    
     
     launch : function(){
         
@@ -18,4 +18,3 @@ Ext.application({
         
     }
 });
-

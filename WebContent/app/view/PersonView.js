@@ -3,7 +3,7 @@
  *
  */
  
-Ext.define('namemanager.view.Person', {
+Ext.define('namemanager.view.PersonView', {
 
     extend: 'Ext.form.Panel',
     alias: 'widget.PersonView',

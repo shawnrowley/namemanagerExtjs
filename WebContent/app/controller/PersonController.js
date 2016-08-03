@@ -2,35 +2,35 @@
  * 
  */
  
- Ext.define('namemanager.controller.', {
+ Ext.define('namemanager.controller.PersonController', {
     extend: 'Ext.app.Controller',
     models: ['namemanager.model.Person'],
-    views: ['namemanager.view.Person'],
+    views: ['namemanager.view.PersonView'],
 
     refs: [{
         ref: 'personViewForm',
-        selector: 'viewport > container > PersonView'
+        selector: 'viewport > PersonView'
     }],
 
     init: function () {
         this.control({
 
-            'viewport > container > PersonView button[itemId=btnCreate]': {
+            'viewport > PersonView button[itemId=btnCreate]': {
                 click: this.onCreateClick
             },
-            'viewport > container > PersonView button[itemId=btnLoad]': {
+            'viewport > PersonView button[itemId=btnLoad]': {
                 click: this.onLoadClick
             },
-            'viewport > container > PersonView button[itemId=btnUpdate]': {
+            'viewport > PersonView button[itemId=btnUpdate]': {
                 click: this.onUpdateClick
             },
-            'viewport > container > PersonView button[itemId=btnDelete]': {
+            'viewport > PersonView button[itemId=btnDelete]': {
                 click: this.onDeleteClick
             },
-            'viewport > container > PersonView button[itemId=btnReset]': {
+            'viewport > PersonView button[itemId=btnReset]': {
                 click: this.onResetClick
             },
-            'viewport > container > PersonView button[itemId=btnClear]': {
+            'viewport > PersonView button[itemId=btnClear]': {
                 click: this.onClearClick
             }
         });
@@ -44,10 +44,30 @@
         this.getPersonViewForm().clearForm();
     },
     
+    onCreateClick: function () {
+    	alert('Create'); 
+    },
+    
+    getPersons: function() {
+    	var me = this;
+    	Ext.Ajax.request({
+           url : '/rest/Persons',
+           method : 'GET',
+           success: function(resp) {
+           	   var data = Ext.decode(resp.responseText);
+           	   
+               //reload
+           },
+           failure: function(resp) {
+               //failed display
+           } 
+       });
+    },
+    
     addPerson: function(person) {
       var me =this;
       Ext.Ajax.request({
-           url : 'rest/add',
+           url : '/rest/Persons',
            method : 'POST',
            jsonData : person,
            reader : {
@@ -62,11 +82,11 @@
        });
     },
     
-    deletePerson: function(person) {
+    deletePerson: function(id) {
         var me = this;
         Ext.Ajax.request({
-          url : '/rest/delete',
-          method : 'POST',
+          url : Ext.String.format('/rest/Persons/{0}', id),
+          method : 'DELETE',
           jsonData : person,
           headers:
           {
@@ -80,17 +100,28 @@
            
           }
         });
-    }
+    },
     
     updatePerson: function(person) {
       var me =this;
         Ext.Ajax.request({
-           url : '/rest/update',
-           method : 'POST', 
+           url : '/rest/Persons/',
+           method : 'PUT', 
            jsonData : person,
+           headers:
+          {
+              'Accept' :'application/json',
+              'Content-Type' : 'application/json'
+          },
+          success : function(resp) {
            
+          },
+          failure : function (resp) {
+           
+          }
          
         });
     }
+     
 
 });
